@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface Props {
   text: string;
@@ -11,11 +11,11 @@ const TodoItem: React.SFC<Props> = ({ text, done, onToggle, onRemove }) => (
   <li>
     <b
       onClick={onToggle}
-      style={{ textDecoration: done ? "line-through" : "none" }}
+      style={{ textDecoration: done ? 'line-through' : 'none' }}
     >
       {text}
     </b>
-    <span style={{ marginLeft: "0.5rem" }} onClick={onRemove}>
+    <span style={{ marginLeft: '0.5rem' }} onClick={onRemove}>
       삭제
     </span>
   </li>

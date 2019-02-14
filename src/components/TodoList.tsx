@@ -1,7 +1,7 @@
-import * as React from "react";
-import TodoItem from "./TodoItem";
-import { TodoItemData } from "../store/modules/todos";
-import { List } from "immutable";
+import { List } from 'immutable';
+import * as React from 'react';
+import { TodoItemData } from '../store/modules/todos';
+import TodoItem from './TodoItem';
 
 interface Props {
   input: string;
@@ -20,17 +20,20 @@ const TodoList: React.SFC<Props> = ({
   onToggle,
   onChange
 }) => {
-  const todoItemList = todoItems.map(todo =>
-    todo ? (
+  const todoItemList = todoItems.map(todo => {
+    const handleToggle = () => onToggle(todo.id);
+    const handleRemove = () => onRemove(todo.id);
+
+    return todo ? (
       <TodoItem
         key={todo.id}
         done={todo.done}
-        onToggle={() => onToggle(todo.id)}
-        onRemove={() => onRemove(todo.id)}
+        onToggle={handleToggle}
+        onRemove={handleRemove}
         text={todo.text}
       />
-    ) : null
-  );
+    ) : null;
+  });
 
   const onChangeInput = (e: any) => {
     const { value } = e.currentTarget;
@@ -41,7 +44,7 @@ const TodoList: React.SFC<Props> = ({
     <div>
       <h1>Nak Todo List</h1>
       <input onChange={onChangeInput} value={input} />
-      <button type="button" onClick={onCreate}>
+      <button type='button' onClick={onCreate}>
         추가
       </button>
       <ul>{todoItemList}</ul>

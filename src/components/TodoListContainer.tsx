@@ -1,13 +1,13 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { List } from "immutable";
-import TodoList from "./TodoList";
-import { StoreState } from "../store/modules";
+import { List } from 'immutable';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { StoreState } from '../store/modules';
 import {
-  TodoItemData,
-  actionCreators as todosActions
-} from "../store/modules/todos";
+  actionCreators as todosActions,
+  TodoItemData
+} from '../store/modules/todos';
+import TodoList from './TodoList';
 
 interface Props {
   todoItems: List<TodoItemData>;
@@ -58,7 +58,7 @@ const mapStateToProps = ({ todos }: StoreState) => ({
   todoItems: todos.todoItems
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   TodosActions: bindActionCreators(todosActions, dispatch)
 });
 
